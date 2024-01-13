@@ -1,6 +1,7 @@
 let currentResult = 0;
 let currentOperand = 0;
 let currentOperator = null;
+let changeOperator = false;
 
 function roundResult(a) {
     return Math.round(a*1000)/1000;
@@ -28,39 +29,27 @@ function modulo(a, b) {
 
 function operate(a, b, op) {
     if (op === '+') {
-        return add(Number(a),Number(b));
+        return roundResult(add(Number(a),Number(b)));
     } else if (op === '-') {
-        return substract(Number(a),Number(b));
+        return roundResult(substract(Number(a),Number(b)));
     } else if (op === '×') { 
-        return multiply(Number(a),Number(b));
+        return roundResult(multiply(Number(a),Number(b)));
     } else if (op === '÷') { 
         if (b == 0) {
             alert("You can't divide by 0!");
-            return 0;
+        } else {
+            return roundResult(divide(Number(a),Number(b)));
         }
-        return divide(Number(a),Number(b));
     } else if (op === '%') { 
-        return modulo(Number(a),Number(b));
+        return roundResult(modulo(Number(a),Number(b)));
     } else {
         console.log("Invalid operand!");
     }
 }
 
 function appendDigit(digit) {
+    changeOperator = false;
     currentOperand += digit;
-    displayOperand.textContent = Number(currentOperand);
-}
-
-function setOperator(operator) {
-    if (currentOperator == null) {
-        currentResult = Number(currentOperand);
-        currentOperand = 0;
-    } else {
-        currentResult = operate(currentResult, currentOperand, currentOperator);
-        currentOperand = 0;
-    }
-    currentOperator = operator;
-    displayResult.textContent = currentResult + currentOperator;
     displayOperand.textContent = Number(currentOperand);
 }
 
@@ -76,15 +65,33 @@ function appendDecimal() {
     }
 }
 
-function evaluate() {
-    if (currentOperator != null) {
-        currentResult = operate(currentResult, currentOperand, currentOperator);
-        displayOperand.textContent = currentResult;
-        displayResult.textContent = '';
-        currentResult = 0;
+function setOperator(operator) {
+    if (currentOperator == null) {
+        currentOperator = operator;
+        currentResult = Number(currentOperand);
         currentOperand = 0;
-        currentOperator = null;
-    } 
+    } else {
+        if (!changeOperator) {
+            currentResult = operate(currentResult, currentOperand, currentOperator);
+            changeOperator = true;
+            currentOperand = 0;
+            currentOperator = operator;
+        } 
+        else {
+            currentOperator = operator;
+        }   
+    }
+    displayOperand.textContent = currentOperand;    
+    displayResult.textContent = currentResult + ' ' + currentOperator;
+}
+
+function evaluate() {
+    currentResult = operate(currentResult, currentOperand, currentOperator);
+    displayOperand.textContent = currentResult;
+    currentOperand = 0;
+    currentResult = 0;
+    currentOperator = null;
+    displayResult.textContent = '';
 }
 
 function clearCalculator() {
@@ -103,10 +110,10 @@ function handleKeyboardInput(e) {
         appendDecimal();
     }
     else if (e.key === '=' || e.key === 'Enter') {
-        evaluate()
+        evaluate();
     }
     else if (e.key === 'Escape') {
-        clear()
+        clear();
     }
     else if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
         setOperator(convertOperator(e.key))

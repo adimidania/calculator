@@ -33,10 +33,10 @@ main {
 }
 
 #calculator {
-    width: 375px;
+    width: 350px;
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 10px #3331328f;
+    box-shadow: 0 0 10px #3331325e;
     padding: 17.5px 20px;
 }
 
