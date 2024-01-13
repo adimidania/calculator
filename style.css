@@ -58,14 +58,14 @@ main {
 
 #calculator #display #result {
     font-size: 20px;
-    height: 15px;
+    height: 25px;
     padding: 0 15px;
     font-weight: 400;
 }
 
 #calculator #display #current {
     font-size: 27.5px;
-    height: 20px;
+    height: 45px;
     padding: 0 15px;
     font-weight: 500;
 

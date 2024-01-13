@@ -65,7 +65,7 @@ operators.forEach((operator) => {
             currentOperand = 0;
         }
         currentOperator = operator.textContent;
-        displayResult.textContent = currentResult;
+        displayResult.textContent = currentResult + currentOperator;
         displayOperand.textContent = Number(currentOperand);
     })
 })
