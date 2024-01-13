@@ -33,11 +33,11 @@ main {
 }
 
 #calculator {
-    width: 400px;
+    width: 375px;
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    padding: 15px;
+    box-shadow: 0 0 10px #3331328f;
+    padding: 17.5px 20px;
 }
 
 #calculator #display {
@@ -50,19 +50,25 @@ main {
     align-items: flex-end;
     gap: 10px;
     justify-content: center;
-    padding: 22.5px 15px;
+    padding: 22.5px 0;
     border-radius: 5px;
     margin-bottom: 10px;
+    overflow-y:hidden;
 }
 
-#calculator #display #results {
+#calculator #display #result {
     font-size: 20px;
+    height: 15px;
+    padding: 0 15px;
     font-weight: 400;
 }
 
 #calculator #display #current {
     font-size: 27.5px;
+    height: 20px;
+    padding: 0 15px;
     font-weight: 500;
+
 }
 
 #calculator #buttons {
@@ -85,10 +91,10 @@ main {
 
 #calculator #buttons button:hover {
     filter: brightness(0.95);
-    
+
 }
 
-#one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #zero, #decimal {
+.digit, #decimal {
     background-color: var(--button-number-bg-color);
 }
 
