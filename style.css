@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --button-font-size: 17px;
+    --button-font-weight: 600;
+    --button-number-bg-color: #FFCAD4;
+    --button-operator-bg-color: #F4ACB7;
+    --button-clear-bg-color: #9D8189;
+    --button-text-color: #333132;
+    --background-body: #EBF1ED;
+}
+
+body { 
+    background-color: var(--background-body);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#calculator {
+    width: 400px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+}
+
+#calculator #display {
+    width: 100%;
+    color: var(--button-text-color);
+    height: 100px;
+    background-color: var(--background-body);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    justify-content: center;
+    padding: 22.5px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#calculator #display #results {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#calculator #display #current {
+    font-size: 27.5px;
+    font-weight: 500;
+}
+
+#calculator #buttons {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+#calculator #buttons button {
+    cursor: pointer;
+    height: 55px;
+    color: var(--button-text-color);
+    font-size: var(--button-font-size);
+    font-weight: var(--button-font-weight);
+    border: none;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+#calculator #buttons button:hover {
+    filter: brightness(0.95);
+    
+}
+
+#one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #zero, #decimal {
+    background-color: var(--button-number-bg-color);
+}
+
+#multiply, #divide, #add, #subtract, #equals {
+    background-color: var(--button-operator-bg-color);
+}
+
+#clear, #sign, #modulo {
+    background-color: var(--button-clear-bg-color);
+}
+
+#calculator #buttons #zero {
+    grid-column: 1/3;
+}
