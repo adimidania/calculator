@@ -91,7 +91,7 @@ function evaluate() {
     currentOperand = 0;
     currentResult = 0;
     currentOperator = null;
-    displayResult.textContent = '';
+    displayResult.textContent = currentResult;
 }
 
 function clearCalculator() {
@@ -138,7 +138,7 @@ const clearBtn = document.querySelector('#clear');
 const signBtn = document.querySelector('#sign');
 const decimalBtn = document.querySelector('#decimal');
 
-window.addEventListener('keydown', handleKeyboardInput);
+
 digitButtons.forEach((digit) => {
     digit.addEventListener('click', function(e) {
         appendDigit(digit.textContent);
@@ -151,20 +151,10 @@ operatorButtons.forEach((operator) => {
     })
 })
 
-signBtn.addEventListener('click', function() {
-    changeSign();
-})
-
-decimalBtn.addEventListener('click', function() {
-    appendDecimal();
-})
-
-equalsBtn.addEventListener('click', function() {
-    evaluate();
-})
-
-clearBtn.addEventListener('click', function() {
-    clearCalculator();
-})
+window.addEventListener('keydown', handleKeyboardInput);
+signBtn.addEventListener('click', changeSign);
+decimalBtn.addEventListener('click', appendDecimal);
+equalsBtn.addEventListener('click', evaluate);
+clearBtn.addEventListener('click',  clearCalculator);
 
 
